@@ -7,6 +7,7 @@ public:
         for(int j=0; j<n-1; j++){
             if(nums[j] == nums[j+1]){
                 ans = nums[j];
+                break;
             }
         }
         return ans;
