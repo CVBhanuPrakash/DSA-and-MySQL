@@ -1,19 +1,15 @@
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
-        map<char,int> A;
-        map<char,int> B;
-        for(auto ch: ransomNote){
-            A[ch]++;
-        }
+        vector<int> v(26);
         for(auto ch: magazine){
-            B[ch]++;
+            int index = ch-'a';
+            v[index]++;
         }
-        for(auto it: A){
-            if(B.count(it.first) == 0) return false;
-            if(it.second > B[it.first]) return false;
+        for(auto ch: ransomNote){
+            int index = ch - 'a';
+            if(--v[index] < 0) return false;
         }
         return true;
-        
     }
 };
