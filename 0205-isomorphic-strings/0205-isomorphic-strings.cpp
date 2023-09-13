@@ -1,12 +1,19 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        int m1[256] = {0}, m2[256] = {0}, n = s.size();
-        for (int i = 0; i < n; ++i) {
-            if (m1[s[i]] != m2[t[i]]) return false;
-            m1[s[i]] = i + 1;
-            m2[t[i]] = i + 1;
+        map<char,char> mp, mp1;
+        
+        if (s.size()!=t.size()) return 0;
+        
+        for (int i=0; i<s.size(); i++){
+            if (mp.find(s[i])!=mp.end()){
+                if (mp[s[i]]!= t[i])return 0;
+            }
+            else if (mp1.find(t[i])!=mp1.end()){
+                if (mp1[t[i]]!=s[i])return 0;
+            }
+            else {mp[s[i]]= t[i];mp1[t[i]]=s[i];}
         }
-        return true;
+        return 1;
     }
 };
