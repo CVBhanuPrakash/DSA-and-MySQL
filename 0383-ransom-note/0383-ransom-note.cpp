@@ -11,9 +11,7 @@ public:
         }
         for(auto it: A){
             if(B.count(it.first) == 0) return false;
-            else {
-                if(it.second > B[it.first]) return false;
-            }
+            if(it.second > B[it.first]) return false;
         }
         return true;
         
