@@ -10,9 +10,7 @@ public:
     }
     int addDigits(int num) {
         int temp = findSum(num);
-        while(temp>9){
-            temp = findSum(temp);
-        }
+        if(temp >= 10) return addDigits(temp);
         return temp;
     }
 };
